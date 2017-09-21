@@ -1,0 +1,39 @@
+.App {
+  text-align: center;
+}
+
+.Navigation {
+  color: #EEE;
+  background-color: #222;
+}
+
+.GameWrapper {
+  width: 100%;
+}
+
+.GameBoard {
+  position: relative;
+  height: 500px;
+  width: 500px;
+  margin: 0 auto;
+  background-color: #59F;
+}
+
+.GameTile {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background-color: #DDD;
+  border-style: double;
+}
+
+.GameTile:hover {
+  background-color: #EEE;
+}
+
+.PlayerView {
+  height: 100px;
+  width: 600px;
+  margin: 0 auto;
+  background-color: #5F9;
+}
