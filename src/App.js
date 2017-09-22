@@ -23,6 +23,8 @@ class App extends Component {
         let b = []
         b.push({shape:[[0,0]], type: "house"})
         b.push({shape:[[0,0]], type: "house2"})
+        b.push({shape: [[0,0],[1,0]], type: "aparments"})
+        b.push({shape: [[0,0],[1,0]], type: "aparments2"})
         b.push({shape:[[0,0],[0,1],[1,0],[1,1]], type: "square"})
         b.push({shape:[[-1,0],[0,0],[1,0]], type: "road"})
         b.push({shape:[[-1,0],[0,0],[1,0]], type: "road2"})
