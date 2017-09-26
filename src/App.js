@@ -49,17 +49,47 @@ class App extends Component {
         b.push({shape:[[0,0],[0,-1],[1,-1],[-1,0],[-1,1]], type: "tenements"})
         return b
       })(),
+      overlayDivs: null,
+      pieceLayer: null,
       selectedPiece: null,
       orientation: 0
     }
     this.selectPiece = this.selectPiece.bind(this)
-    this.rotatePiece = this.rotatePiece.bind(this)
     this.prieviewPlacement = this.prieviewPlacement.bind(this)
-    this.clearPreview = this.clearPreview.bind(this)
+    this.rotatePiece = this.rotatePiece.bind(this)
     this.placePiece = this.placePiece.bind(this)
     this.orientPiece = this.orientPiece.bind(this)
   }
 
+  render() {
+    return (
+      <div className="App" onKeyDown={this.handleKeyUp}>
+        <Navigation />
+        <div >
+        <div className="GameWrapper">
+          <GameBoard  board={this.state.board} 
+                      pieces={this.state.pieces}
+                      overlayDivs={this.state.overlayDivs}
+                      selectedPiece={this.orientPiece()} 
+                      placePiece={this.placePiece} 
+                      prieviewPlacement={this.prieviewPlacement} 
+                      clearPreview={this.clearPreview} 
+                      orientation={this.state.orientation}
+                      prieviewPlacement={this.prieviewPlacement}
+                      />
+        </div>
+        <PlayerView   pieces={this.state.pieces} 
+                      selectPiece={this.selectPiece} 
+                      rotatePiece={this.rotatePiece}
+                      />
+        </div>
+      </div>
+    );
+  }
+
+  handleKeyUp(e) {
+    debugger
+  }
   selectPiece(nPiece) {
     this.setState((prevState) => {
       return {selectedPiece: prevState.pieces.filter(piece => piece.type === nPiece)[0]}
@@ -73,6 +103,7 @@ class App extends Component {
       })
     }
   }
+
   orientPiece() {
     if(this.state.selectedPiece !== null) {
     var orientedPiece = this.state.selectedPiece
@@ -85,62 +116,25 @@ class App extends Component {
     }
   }
 
-  prieviewPlacement(piece, position) {
-    let b = this.state.board
-    let pb = this.state.board
-    let errors = false;
-    let overlayPiece = piece
-    debugger
-    for(let k = 0; k < this.state.orientation; k++) {
-    	piece.shape = piece.shape.map(spot => [spot[1],-1*spot[0]])
-    }
-    for(let p = 0; p < piece.shape.length; p++) {
-        if(b[position[0]+piece.shape[p][0]] && b[position[0]+piece.shape[p][0]][position[1]+piece.shape[p][1]] && b[position[0]+piece.shape[p][0]][position[1]+piece.shape[p][1]].fill === "#EEE") {
-          continue;
-        } else {
-          errors = true;
-        }
-    }
-
-    if(!errors) {
-      for(let p = 0; p < piece.shape.length; p++) {
-          b[position[0]+piece.shape[p][0]][position[1]+piece.shape[p][1]].fill = "#FFF"
+  prieviewPlacement(posArray, pos) {
+    let newOverlay = []
+    var sPiece = this.orientPiece()
+    for(let p = 0; p < posArray.length; p++) {
+      if(pos[0]+sPiece.shape[p][0] < 10 && pos[0]+sPiece.shape[p][0] > -1 && pos[1]+sPiece.shape[p][1] < 10 && pos[1]+sPiece.shape[p][1] > -1) {
+        newOverlay.push([pos[0]+sPiece.shape[p][0], pos[1]+sPiece.shape[p][1]])
+      } else {
+        continue;
       }
     }
-
-    this.setState((prevState, curProps) => {
-      debugger
-      return {
-        board: b
-      }
-    })
-  }
-
-  clearPreview() {
-    // let b = this.state.board
-    // let pb = this.state.prevBoard
-    // let errors = false;
-    // for(let k = 0; k < this.state.orientation; k++) {
-    // 	piece.shape = piece.shape.map(spot => [spot[1],-1*spot[0]])
-    // }
-    // for(let p = 0; p < piece.shape.length; p++) {
-    //     if(b[position[0]+piece.shape[p][0]] && b[position[0]+piece.shape[p][0]][position[1]+piece.shape[p][1]] && b[position[0]+piece.shape[p][0]][position[1]+piece.shape[p][1]].fill === "#EEE") {
-    //       continue;
-    //     } else {
-    //       errors = true;
-    //     }
-    // }
-
-    // if(!errors) {
-    //   for(let p = 0; p < piece.shape.length; p++) {
-    //       b[position[0]+piece.shape[p][0]][position[1]+piece.shape[p][1]].fill = pb[position[0]+piece.shape[p][0]][position[1]+piece.shape[p][1]].fill
-    //   }
-    // }
-    this.setState((prevState, curProps) => {
-      return {
-        board: prevState.prevBoard
-      }
-    })
+    if(newOverlay.length === posArray.length) {
+      this.setState(() => {
+        return {overlayDivs: {tiles: newOverlay, validMove: true}}
+      })
+    } else {
+      this.setState(() => {
+        return {overlayDivs: {tiles: newOverlay, validMove: false}}
+      })
+    }
   }
 
   placePiece(piece, position) {
@@ -153,7 +147,6 @@ class App extends Component {
         } else {
           errors = true;
         }
-
     }
 
     if(!errors) {
@@ -166,23 +159,10 @@ class App extends Component {
       return {
         board: b,
         pieces: prevState.pieces.filter((p) => p !== piece),
-        orientation: 0
+        orientation: 0,
+        selectedPiece: null
       }
     })
-  }
-
-  
-
-  render() {
-    return (
-      <div className="App">
-        <Navigation />
-        <div className="GameWrapper">
-          <GameBoard board={this.state.board} pieces={this.state.pieces} selectedPiece={this.orientPiece()} placePiece={this.placePiece} prieviewPlacement={this.prieviewPlacement} clearPreview={this.clearPreview} orientation={this.state.orientation}/>
-        </div>
-        <PlayerView pieces={this.state.pieces} selectPiece={this.selectPiece} rotatePiece={this.rotatePiece}/>
-      </div>
-    );
   }
 }
 
