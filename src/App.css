@@ -26,6 +26,13 @@
   background-color: #DDD;
   border-style: double;
 }
+.OverlayTile {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  opacity: 0.5;
+  z-index: 5;
+}
 
 .GameTile:hover {
   background-color: #EEE;
