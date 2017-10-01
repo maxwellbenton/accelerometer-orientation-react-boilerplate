@@ -23,24 +23,42 @@ class App extends Component {
       boardDivs: null,
       pieces: (() => {
         let b = []
-        b.push({shape:[[0,0]], type: "house"})
-        b.push({shape:[[0,0]], type: "house2"})
-        b.push({shape:[[0,0],[1,0]], type: "rowhouse"})
-        b.push({shape:[[0,0],[1,0]], type: "rowhouse2"})
-        b.push({shape:[[0,0],[1,0],[1,1]], type: "tenement"})
-        b.push({shape:[[0,0],[1,0],[1,1]], type: "tenement2"})
-        b.push({shape:[[0,0],[-1,0],[1,0]], type: "footbridge"})
-        b.push({shape:[[0,0],[0,1],[1,0],[1,1]], type: "plaza"})
-        b.push({shape:[[0,0],[-1,0],[1,0],[0,1]], type: "courthouse"})
-        b.push({shape:[[0,0],[-1,0],[1,0],[-1,1],[1,1]], type: "mansion"})
-        b.push({shape:[[0,0],[0,-1],[-1,0],[1,0],[0,1]], type: "hospital"})
-        b.push({shape:[[0,0],[1,-1],[-1,0],[1,0],[-1,1]], type: "office"})
-        b.push({shape:[[0,0],[0,-1],[-1,0],[1,0],[-1,1]], type: "federal"})
-        b.push({shape:[[0,0],[0,-1],[1,-1],[-1,0],[-1,1]], type: "tenements"})
+        b.push({shape:[[0,0],[0,-1],[-1,0],[0,1],[1,0],[2,0]], player: 0, type: "duomo", colors: ['#C0C0C0','#949292','#EEE','#FFF']})
+        //light pieces
+        b.push({shape:[[0,0]], player: 1, type: "house", colors: ['#580B0E','#1A0001','#7D2226','#A14045']})
+        b.push({shape:[[0,0]], player: 1, type: "house2", colors: ['#580B0E','#1A0001','#7D2226','#A14045']})
+        b.push({shape:[[0,0],[1,0]], player: 1, type: "rowhouse", colors: ['#580B0E','#1A0001','#7D2226','#A14045']})
+        b.push({shape:[[0,0],[1,0]], player: 1, type: "rowhouse2", colors: ['#580B0E','#1A0001','#7D2226','#A14045']})
+        b.push({shape:[[0,0],[1,0],[1,1]], player: 1, type: "tenement", colors: ['#580B0E','#1A0001','#7D2226','#A14045']})
+        b.push({shape:[[0,0],[1,0],[1,1]], player: 1, type: "tenement2", colors: ['#580B0E','#1A0001','#7D2226','#A14045']})
+        b.push({shape:[[0,0],[-1,0],[1,0]], player: 1, type: "footbridge", colors: ['#580B0E','#1A0001','#7D2226','#A14045']})
+        b.push({shape:[[0,0],[0,1],[1,0],[1,1]], player: 1, type: "plaza", colors: ['#580B0E','#1A0001','#7D2226','#A14045']})
+        b.push({shape:[[0,0],[1,0],[0,-1],[-1,-1]], player: 1, type: "school", colors: ['#580B0E','#1A0001','#7D2226','#A14045']})
+        b.push({shape:[[0,0],[0,-1],[1,0],[0,1]], player: 1, type: "courthouse", colors: ['#580B0E','#1A0001','#7D2226','#A14045']})
+        b.push({shape:[[0,0],[0,-1],[1,-1],[0,1],[1,1]], player: 1, type: "museum", colors: ['#580B0E','#1A0001','#7D2226','#A14045']})
+        b.push({shape:[[0,0],[0,-1],[-1,0],[1,0],[0,1]], player: 1, type: "hospital", colors: ['#580B0E','#1A0001','#7D2226','#A14045']})
+        b.push({shape:[[0,0],[1,-1],[1,0],[0,1],[-1,1]], player: 1, type: "mall", colors: ['#580B0E','#1A0001','#7D2226','#A14045']})
+        b.push({shape:[[0,0],[0,-1],[-1,0],[0,1],[1,-1]], player: 1, type: "university", colors: ['#580B0E','#1A0001','#7D2226','#A14045']})
+        //dark pieces
+        b.push({shape:[[0,0]], player: 2, type: "workshop", colors: ['#252B30','#0E1923', '#434D55', '#5E6972']})
+        b.push({shape:[[0,0]], player: 2, type: "workshop2", colors: ['#252B30','#0E1923', '#434D55', '#5E6972']})
+        b.push({shape:[[0,0],[1,0]], player: 2, type: "forge", colors: ['#252B30','#0E1923', '#434D55', '#5E6972']})
+        b.push({shape:[[0,0],[1,0]], player: 2, type: "forge2", colors: ['#252B30','#0E1923', '#434D55', '#5E6972']})
+        b.push({shape:[[0,0],[1,0],[1,-1]], player: 2, type: "sawmill", colors: ['#252B30','#0E1923', '#434D55', '#5E6972']})
+        b.push({shape:[[0,0],[1,0],[1,-1]], player: 2, type: "sawmill2", colors: ['#252B30','#0E1923', '#434D55', '#5E6972']})
+        b.push({shape:[[0,0],[-1,0],[1,0]], player: 2, type: "railbridge", colors: ['#252B30','#0E1923', '#434D55', '#5E6972']})
+        b.push({shape:[[0,0],[0,1],[1,0],[1,1]], player: 2, type: "lumberyard", colors: ['#252B30','#0E1923', '#434D55', '#5E6972']})
+        b.push({shape:[[0,0],[1,0],[0,1],[-1,1]], player: 2, type: "warehouse", colors: ['#252B30','#0E1923', '#434D55', '#5E6972']})
+        b.push({shape:[[0,0],[0,-1],[1,0],[0,1]], player: 2, type: "foundry", colors: ['#252B30','#0E1923', '#434D55', '#5E6972']})
+        b.push({shape:[[0,0],[0,-1],[1,-1],[0,1],[1,1]], player: 2, type: "factory", colors: ['#252B30','#0E1923', '#434D55', '#5E6972']})
+        b.push({shape:[[0,0],[0,-1],[-1,0],[1,0],[0,1]], player: 2, type: "coalplant", colors: ['#252B30','#0E1923', '#434D55', '#5E6972']})
+        b.push({shape:[[0,0],[-1,-1],[0,-1],[1,0],[1,1]], player: 2, type: "ironworks", colors: ['#252B30','#0E1923', '#434D55', '#5E6972']})
+        b.push({shape:[[0,0],[0,-1],[-1,0],[0,1],[1,1]], player: 2, type: "refinery", colors: ['#252B30','#0E1923', '#434D55', '#5E6972']})
         return b
       })(),
       overlayDivs: null,
       pieceLayer: [],
+      hoverState: 'PieceLayer',
       leftSideLayer: [],
       selectedPiece: null,
       orientation: 0
@@ -58,25 +76,25 @@ class App extends Component {
       this.state.boardData.forEach((row,m) => {
         row.forEach((tile,n) => {
           //base cube
-          allDivs.push(<div className="PieceDiv" key={`tile-${m},${n}`} id={`tile-${m},${n}`} style={{transform: `rotateX(45deg) translateX(${m*50}px) translateY(${n*50}px)`}}></div>)
-          allDivs.push(<div className="PieceDiv" key={`facade-${m},${n}`} id={`facade-${m},${n}`} style={{transform: `rotateX(45deg) translateX(${(m*50)}px) translateY(${(n*50)+25}px) translateZ(25px) rotateX(-90deg)`}}></div>)
-          if(m > 4) { allDivs.push(<div className="PieceDiv" key={`leftSide-${m},${n}`} id={`leftSide-${m},${n}`} style={{transform: `rotateX(45deg) rotateY(90deg) translateX(-25px) translateY(${n*50}px) translateZ(${(m*50)-25}px) rotateZ(-90deg) rotateY(180deg)`}}></div>) }
-          if(m < 4) { allDivs.push(<div className="PieceDiv" key={`rightSide-${m},${n}`} id={`rightSide-${m},${n}`} style={{transform: `rotateX(45deg) rotateY(90deg) translateX(-25px) translateY(${n*50}px) translateZ(${(m*50)+25}px) rotateZ(-90deg)`}}></div>) }
+          allDivs.push(<div className="PieceDiv" key={`tile-${n},${m}`} ref={(div) => this[`tile-${n},${m}`] = div} style={{transform: `rotateX(45deg) translateX(${m*50}px) translateY(${n*50}px)`}}></div>)
+          allDivs.push(<div className="PieceDiv" key={`facade-${n},${m}`} ref={(div) => this[`facade-${n},${m}`] = div} style={{transform: `rotateX(45deg) translateX(${(m*50)}px) translateY(${(n*50)+25}px) translateZ(25px) rotateX(-90deg)`}}></div>)
+          allDivs.push(<div className="PieceDiv" key={`leftSide-${n},${m}`} ref={(div) => this[`leftSide-${n},${m}`] = div} style={{transform: `rotateX(45deg) rotateY(90deg) translateX(-25px) translateY(${n*50}px) translateZ(${(m*50)-25}px) rotateZ(-90deg) rotateY(180deg)`}}></div>) 
+          allDivs.push(<div className="PieceDiv" key={`rightSide-${n},${m}`} ref={(div) => this[`rightSide-${n},${m}`] = div} style={{transform: `rotateX(45deg) rotateY(90deg) translateX(-25px) translateY(${n*50}px) translateZ(${(m*50)+25}px) rotateZ(-90deg)`}}></div>) 
           //street level divs
-          allDivs.push(<div className="PieceDiv" key={`streetFront-${m},${n}`} id={`streetFront-${m},${n}`} style={{height: '20px', transform: `rotateX(45deg) translateX(${(m*50)}px) translateY(${(n*50)+25}px) rotateX(-90deg)`}}></div>)
-          if(m > 4) { allDivs.push(<div className="PieceDiv" key={`streetLeftSide-${m},${n}`} id={`streetLeftSide-${m},${n}`} style={{height: '20px', transform: `rotateX(45deg) rotateY(90deg) translateY(${n*50}px) translateZ(${(m*50)-25}px) rotateZ(-90deg) rotateY(180deg)`}}></div>) }
-          if(m < 4) { allDivs.push(<div className="PieceDiv" key={`streetRightSide-${m},${n}`} id={`streetRightSide-${m},${n}`} style={{height: '20px', transform: `rotateX(45deg) rotateY(90deg) translateY(${n*50}px) translateZ(${(m*50)+25}px) rotateZ(-90deg)`}}></div>) }
-          allDivs.push(<div className="PieceDiv" key={`streetLevel-${m},${n}`} id={`streetLevel-${m},${n}`} style={{transform: `rotateX(45deg) translateX(${m*50}px) translateY(${n*50}px) translateZ(20px)`}}></div>)
+          allDivs.push(<div className="PieceDiv" key={`streetFront-${n},${m}`} ref={(div) => this[`streetFront-${n},${m}`] = div} style={{height: '20px', transform: `rotateX(45deg) translateX(${(m*50)}px) translateY(${(n*50)+25}px) rotateX(-90deg)`}}></div>)
+          allDivs.push(<div className="PieceDiv" key={`streetLeftSide-${n},${m}`} ref={(div) => this[`streetLeftSide-${n},${m}`] = div} style={{height: '20px', transform: `rotateX(45deg) rotateY(90deg) translateY(${n*50}px) translateZ(${(m*50)-25}px) rotateZ(-90deg) rotateY(180deg)`}}></div>) 
+          allDivs.push(<div className="PieceDiv" key={`streetRightSide-${n},${m}`} ref={(div) => this[`streetRightSide-${n},${m}`] = div} style={{height: '20px', transform: `rotateX(45deg) rotateY(90deg) translateY(${n*50}px) translateZ(${(m*50)+25}px) rotateZ(-90deg)`}}></div>) 
+          allDivs.push(<div className="PieceDiv" key={`streetLevel-${n},${m}`} ref={(div) => this[`streetLevel-${n},${m}`] = div} style={{transform: `rotateX(45deg) translateX(${m*50}px) translateY(${n*50}px) translateZ(20px)`}}></div>)
           //roof divs
-          allDivs.push(<div className="PieceDiv" key={`leftRoof0-${m},${n}`} id={`leftRoof0-${m},${n}`} style={{ width: '32px', transform: `rotateX(45deg) translateX(${m*50}px) translateY(${n*50}px) translateZ(60px) translateX(-3px) rotateY(-38.65deg)`}}></div>)
-          allDivs.push(<div className="PieceDiv" key={`rightRoof0-${m},${n}`} id={`rightRoof0-${m},${n}`} style={{width: '32px', transform: `rotateX(45deg) translateX(${m*50}px) translateY(${n*50}px) translateZ(60px) translateX(22px) rotateY(38.65deg)`}}></div>)
-          allDivs.push(<div className="PieceDiv" key={`leftRoof1-${m},${n}`} id={`leftRoof1-${m},${n}`} style={{height: '32px', transform: `rotateX(45deg) translateX(${m*50}px) translateY(${n*50}px) translateZ(60px) translateY(-3px) rotateX(38.65deg)`}}></div>)
-          allDivs.push(<div className="PieceDiv" key={`rightRoof1-${m},${n}`} id={`rightRoof1-${m},${n}`} style={{height: '32px', transform: `rotateX(45deg) translateX(${m*50}px) translateY(${n*50}px) translateZ(60px) translateY(22px) rotateX(-38.65deg)`}}></div>)
+          allDivs.push(<div className="PieceDiv" key={`leftRoof0-${n},${m}`} ref={(div) => this[`leftRoof0-${n},${m}`] = div} style={{ width: '33px', transform: `rotateX(45deg) translateX(${m*50}px) translateY(${n*50}px) translateZ(60px) translateX(-4px) rotateY(-38.65deg)`}}></div>)
+          allDivs.push(<div className="PieceDiv" key={`rightRoof0-${n},${m}`} ref={(div) => this[`rightRoof0-${n},${m}`] = div} style={{width: '33px', transform: `rotateX(45deg) translateX(${m*50}px) translateY(${n*50}px) translateZ(60px) translateX(21px) rotateY(38.65deg)`}}></div>)
+          allDivs.push(<div className="PieceDiv" key={`leftRoof1-${n},${m}`} ref={(div) => this[`leftRoof1-${n},${m}`] = div} style={{height: '33px', transform: `rotateX(45deg) translateX(${m*50}px) translateY(${n*50}px) translateZ(56px) translateY(-4px) rotateX(38.65deg)`}}></div>)
+          allDivs.push(<div className="PieceDiv" key={`rightRoof1-${n},${m}`} ref={(div) => this[`rightRoof1-${n},${m}`] = div} style={{height: '33px', transform: `rotateX(45deg) translateX(${m*50}px) translateY(${n*50}px) translateZ(56px) translateY(21px) rotateX(-38.65deg)`}}></div>)
           //tower divs
-          allDivs.push(<div className="PieceDiv" key={`towerFacade-${m},${n}`} id={`towerFacade-${m},${n}`} style={{transform: `rotateX(45deg) translateX(${(m*50)}px) translateY(${(n*50)+25}px) translateZ(75px) rotateX(-90deg)`}}></div>)
-          if(m > 4) { allDivs.push(<div className="PieceDiv" key={`towerLeftSide-${m},${n}`} id={`towerLeftSide-${m},${n}`} style={{transform: `rotateX(45deg) rotateY(90deg) translateX(-75px) translateY(${n*50}px) translateZ(${(m*50)-25}px) rotateZ(-90deg) rotateY(180deg)`}}></div>) }
-          if(m < 4) { allDivs.push(<div className="PieceDiv" key={`towerRightSide-${m},${n}`} id={`towerRightSide-${m},${n}`} style={{transform: `rotateX(45deg) rotateY(90deg) translateX(-75px) translateY(${n*50}px) translateZ(${(m*50)+25}px) rotateZ(-90deg)`}}></div>) }
-          allDivs.push(<div className="PieceDiv" key={`towerRoof-${m},${n}`} id={`towerRoof-${m},${n}`} style={{transform: `rotateX(45deg) translateX(${m*50}px) translateY(${n*50}px) translateZ(100px)`}}></div>)
+          allDivs.push(<div className="PieceDiv" key={`towerFacade-${n},${m}`} ref={(div) => this[`towerFacade-${n},${m}`] = div} style={{transform: `rotateX(45deg) translateX(${(m*50)}px) translateY(${(n*50)+25}px) translateZ(75px) rotateX(-90deg)`}}></div>)
+          allDivs.push(<div className="PieceDiv" key={`towerLeftSide-${n},${m}`} ref={(div) => this[`towerLeftSide-${n},${m}`] = div} style={{transform: `rotateX(45deg) rotateY(90deg) translateX(-75px) translateY(${n*50}px) translateZ(${(m*50)-25}px) rotateZ(-90deg) rotateY(180deg)`}}></div>) 
+          allDivs.push(<div className="PieceDiv" key={`towerRightSide-${n},${m}`} ref={(div) => this[`towerRightSide-${n},${m}`] = div} style={{transform: `rotateX(45deg) rotateY(90deg) translateX(-75px) translateY(${n*50}px) translateZ(${(m*50)+25}px) rotateZ(-90deg)`}}></div>) 
+          allDivs.push(<div className="PieceDiv" key={`towerRoof-${n},${m}`} ref={(div) => this[`towerRoof-${n},${m}`] = div} style={{transform: `rotateX(45deg) translateX(${m*50}px) translateY(${n*50}px) translateZ(100px)`}}></div>)
         })
       })
 
@@ -100,6 +118,7 @@ class App extends Component {
                       selectedPiece={this.orientPiece()} 
                       placePiece={this.placePiece} 
                       prieviewPlacement={this.prieviewPlacement}
+                      hoverState={this.state.hoverState}
                       />
         </div>
         <PlayerView   pieces={this.state.pieces} 
@@ -129,7 +148,7 @@ class App extends Component {
     if(this.state.selectedPiece !== null) {
     var orientedPiece = this.state.selectedPiece
     for(let k = 0; k < this.state.orientation; k++) {
-    	orientedPiece = {shape: orientedPiece.shape.map(spot => [spot[1],-1*spot[0]]), type: this.state.selectedPiece.type}
+    	orientedPiece = {shape: orientedPiece.shape.map(spot => [spot[1],-1*spot[0]]), type: this.state.selectedPiece.type, player: this.state.selectedPiece.player, colors: this.state.selectedPiece.colors}
     }
     return orientedPiece
     } else {
@@ -149,11 +168,11 @@ class App extends Component {
     }
     if(newOverlay.length === posArray.length) {
       this.setState(() => {
-        return {overlayDivs: {tiles: newOverlay, validMove: true}}
+        return {overlayDivs: {tiles: newOverlay, validMove: true},  hoverState: 'PieceLayerHover'}
       })
     } else {
       this.setState(() => {
-        return {overlayDivs: {tiles: newOverlay, validMove: false}}
+        return {overlayDivs: {tiles: newOverlay, validMove: false},  hoverState: 'PieceLayerHover'}
       })
     }
   }
@@ -162,23 +181,32 @@ class App extends Component {
     let b = this.state.boardData
     let bd = this.state.boardDivs
     let errors = false;
-    
-    for(let p = 0; p < piece.shape.length; p++) {
-        let tileCheck = b[position[0]+piece.shape[p][0]][position[1]+piece.shape[p][1]]
-        if(tileCheck && tileCheck.fill === "#DDD") {
-          continue;
-        } else {
-          errors = true;
-          break;
-        }
+    if(this.state.overlayDivs.validMove) {
+      for(let p = 0; p < piece.shape.length; p++) {
+          if(b[position[0]+piece.shape[p][0]][position[1]+piece.shape[p][1]] && b[position[0]+piece.shape[p][0]][position[1]+piece.shape[p][1]].fill === "#DDD") {
+            continue;
+          } else {
+            errors = true;
+            break;
+          }
+      }
+    } else {
+      errors = true;
     }
     if(!errors) {
       for(let p = 0; p < piece.shape.length; p++) {
+          b[position[0]+piece.shape[p][0]][position[1]+piece.shape[p][1]].fill = piece.colors[0]
+         this[`facade-${position[0]+piece.shape[p][0]},${position[1]+piece.shape[p][1]}`].style.background = `linear-gradient(${piece.colors[0]}, ${piece.colors[1]})`
+         this[`leftSide-${position[0]+piece.shape[p][0]},${position[1]+piece.shape[p][1]}`].style.background = `linear-gradient(${piece.colors[0]}, ${piece.colors[1]})`
+         this[`rightSide-${position[0]+piece.shape[p][0]},${position[1]+piece.shape[p][1]}`].style.background = `linear-gradient(${piece.colors[0]}, ${piece.colors[1]})`
           
-          console.log(piece)
-          console.log(position)
-          debugger
-          b[position[0]+piece.shape[p][0]][position[1]+piece.shape[p][1]].fill = "red"
+          if(this.state.orientation % 2 === 0) {
+            this[`leftRoof0-${position[0]+piece.shape[p][0]},${position[1]+piece.shape[p][1]}`].style.background = `linear-gradient(${piece.colors[3]}, ${piece.colors[2]})`
+            this[`rightRoof0-${position[0]+piece.shape[p][0]},${position[1]+piece.shape[p][1]}`].style.background = `linear-gradient(${piece.colors[3]}, ${piece.colors[2]})`
+          } else {
+            this[`leftRoof1-${position[0]+piece.shape[p][0]},${position[1]+piece.shape[p][1]}`].style.background = `linear-gradient(${piece.colors[3]}, ${piece.colors[2]})`
+            this[`rightRoof1-${position[0]+piece.shape[p][0]},${position[1]+piece.shape[p][1]}`].style.background = `linear-gradient(${piece.colors[3]}, ${piece.colors[2]})`
+          }
           
       }
       this.setState((prevState, curProps) => {
@@ -186,7 +214,8 @@ class App extends Component {
           board: b,
           pieces: prevState.pieces.filter((p) => p !== piece),
           orientation: 0,
-          selectedPiece: null
+          selectedPiece: null,
+          hoverState: 'PieceLayer'
         }
       })
     }

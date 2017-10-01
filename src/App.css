@@ -20,11 +20,12 @@
   position: absolute;
   height: 100%;
   width: 100%;
-  top: 26px;
-  left: -2px;
+  top: 34px;
+  
   transform-style: preserve-3d;
   transform: rotateX(45deg);
 }
+
 .GameTile {
   position: absolute;
   width: 50px;
@@ -36,6 +37,18 @@
   height: 100%;
   width: 100%;
   top: 100px;
+  opacity: 1;
+  transform: translateZ(-150px);
+  transform-style: preserve-3d;
+  pointer-events: none;
+}
+.PieceLayerHover {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 100px;
+  opacity: 0.5;
+  z-index: 5;
   transform: translateZ(-150px);
   transform-style: preserve-3d;
   pointer-events: none;

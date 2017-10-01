@@ -11,6 +11,7 @@ class GameBoard extends Component {
   handleClick(e) {
     
     if(this.props.selectedPiece !== null) {
+
       console.log(e.target.id)
       let pos = e.target.id.split(',').map(p => parseInt(p))
       this.props.placePiece(this.props.selectedPiece, pos)
@@ -38,10 +39,14 @@ class GameBoard extends Component {
   renderOverlay() {
     if(this.props.selectedPiece !== null && this.props.overlayDivs !== null) {
       var newOverlay = []
-      if(this.props.overlayDivs.validMove) {
-        this.props.overlayDivs.tiles.forEach((div) => {
-        newOverlay.push(<div className="OverlayTile" key={`o${div[0]},${div[1]}`} id={`${div[0]},${div[1]}`} style={{top:div[0]*50, left: div[1]*50, backgroundColor: 'white' }} onClick={this.handleClick} onMouseEnter={this.handleMouseOver} onMouseLeave={this.handleMouseOver}/>)
-        })
+      if (this.props.overlayDivs.validMove) {
+        if(this.props.overlayDivs.validMove) {
+          this.props.overlayDivs.tiles.forEach((div) => {
+          newOverlay.push(<div className="OverlayTile" key={`o${div[0]},${div[1]}`} id={`${div[0]},${div[1]}`} style={{top:div[0]*50, left: div[1]*50, backgroundColor: 'white' }} onClick={this.handleClick} onMouseEnter={this.handleMouseOver} onMouseLeave={this.handleMouseOver}/>)
+          })
+        }
+      } else {
+        newOverlay.push(<div className="OverlayTile" key={`o${this.props.overlayDivs.tiles[0][0]},${this.props.overlayDivs.tiles[0][1]}`} id={`${this.props.overlayDivs.tiles[0][0]},${this.props.overlayDivs.tiles[0][1]}`} style={{top:this.props.overlayDivs.tiles[0][0]*50, left: this.props.overlayDivs.tiles[0][1]*50, backgroundColor: 'red' }} onClick={this.handleClick} onMouseEnter={this.handleMouseOver} onMouseLeave={this.handleMouseOver}/>)
       }
       return newOverlay
     }
@@ -56,7 +61,7 @@ class GameBoard extends Component {
             {this.renderOverlay()}
           
           </div>
-          <div className="PieceLayer">
+          <div className={this.props.hoverState}>
             {this.props.boardDivs}
           </div>
         </div>
