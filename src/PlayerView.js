@@ -8,7 +8,7 @@ class PlayerView extends Component {
   renderPieces() {
     return(
       this.props.pieces.map((piece) => {
-        return <div className="playerPiece" id={piece.type} name={piece.type} onClick={this.handleClick}>{piece.type}</div>
+        return <div className="playerPiece" id={piece.type} key={piece.type} name={piece.type} onClick={this.handleClick}>{piece.type}</div>
       })
     )
   }

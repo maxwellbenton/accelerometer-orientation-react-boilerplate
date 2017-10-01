@@ -9,7 +9,9 @@ class GameBoard extends Component {
   }
 
   handleClick(e) {
+    
     if(this.props.selectedPiece !== null) {
+      console.log(e.target.id)
       let pos = e.target.id.split(',').map(p => parseInt(p))
       this.props.placePiece(this.props.selectedPiece, pos)
     }
@@ -25,9 +27,9 @@ class GameBoard extends Component {
 
   renderBoard() {
     let nb = []
-    this.props.board.forEach((row,m) => {
+    this.props.boardData.forEach((row,m) => {
       row.forEach((tile,n) => {
-        nb.push(<div className="GameTile" key={`${m},${n}`} id={`${m},${n}`} style={{top:m*50, left: n*50, backgroundColor: tile.fill }} onClick={this.handleClick} onMouseOver={this.handleMouseOver}/>)
+        nb.push(<div className="GameTile" key={`${m},${n}`} id={`${m},${n}`} style={{top:m*50, left: n*50, backgroundColor: tile.fill }} onClick={this.handleClick} onMouseEnter={this.handleMouseOver}/>)
       })
     })
     return nb
@@ -46,14 +48,17 @@ class GameBoard extends Component {
   }
 
   render() {
-     if(this.props.selectedPiece !== null) {
-       console.log(this.props.selectedPiece)
-     }
-   
     return (
+   
         <div className="GameBoard">
-          {this.renderBoard()}
-          {this.renderOverlay()}
+          <div className="BoardLayer">
+            {this.renderBoard()}
+            {this.renderOverlay()}
+          
+          </div>
+          <div className="PieceLayer">
+            {this.props.boardDivs}
+          </div>
         </div>
     );
   }
