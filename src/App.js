@@ -63,6 +63,7 @@ class App extends Component {
       selectedPiece: null,
       orientation: 0
     }
+    this.handleKey = this.handleKey.bind(this)
     this.selectPiece = this.selectPiece.bind(this)
     this.prieviewPlacement = this.prieviewPlacement.bind(this)
     this.rotatePiece = this.rotatePiece.bind(this)
@@ -72,7 +73,7 @@ class App extends Component {
 
   componentDidMount() {
     //creates and transforms all piece divs and assigns IDs for later.  
-    let angle = '35deg'
+    let angle = '30deg'
     let allDivs = []
       this.state.boardData.forEach((row,m) => {
         row.forEach((tile,n) => {
@@ -106,9 +107,10 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App" onKeyDown={this.handleKeyUp}>
+      <div className="App" >
         <Navigation />
-        <div >
+        <div onKeyPress={this.handleKey} tabIndex="0">
+        
         <div>
           <GameBoard  boardDivs={this.state.boardDivs} 
                       boardData={this.state.boardData}
@@ -129,6 +131,12 @@ class App extends Component {
         </div>
       </div>
     );
+  }
+
+  handleKey(e) {
+    if(e.key === 'r' || e.key === 'R') {
+      this.rotatePiece()
+    } 
   }
 
   selectPiece(nPiece) {

@@ -22,7 +22,7 @@
   top: 38px;
   
   transform-style: preserve-3d;
-  transform: rotateX(35deg) translateZ(-36px);
+  transform: rotateX(30deg) translateZ(-36px);
 }
 
 .GameTile {
