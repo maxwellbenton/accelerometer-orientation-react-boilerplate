@@ -23,7 +23,7 @@ class App extends Component {
       boardDivs: null,
       pieces: (() => {
         let b = []
-        b.push({shape:[[0,0],[0,-1],[-1,0],[0,1],[1,0],[2,0]], towers: [[0,0]], player: 0, type: "duomo", colors: ['#C0C0C0','#949292','#EEE','#FFF']})
+        b.push({shape:[[0,0],[0,-1],[-1,0],[0,1],[1,0],[2,0]], towers: [[0,0]], player: 0, type: "basilica", colors: ['#C0C0C0','#949292','#EEE','#FFF']})
         //light pieces
         b.push({shape:[[0,0]], towers: [], player: 1, type: "house", colors: ['#580B0E','#1A0001','#7D2226','#A14045']})
         b.push({shape:[[0,0]], towers: [], player: 1, type: "house2", colors: ['#580B0E','#1A0001','#7D2226','#A14045']})
