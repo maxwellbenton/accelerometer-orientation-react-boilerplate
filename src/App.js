@@ -31,7 +31,7 @@ class App extends Component {
         b.push({shape:[[0,0],[1,0]], towers: [], player: 1, type: "rowhouse2", colors: ['#580B0E','#1A0001','#7D2226','#A14045']})
         b.push({shape:[[0,0],[1,0],[1,1]], towers: [], player: 1, type: "tenement", colors: ['#580B0E','#1A0001','#7D2226','#A14045']})
         b.push({shape:[[0,0],[1,0],[1,1]], towers: [], player: 1, type: "tenement2", colors: ['#580B0E','#1A0001','#7D2226','#A14045']})
-        b.push({shape:[[0,0],[-1,0],[1,0]], towers: [], player: 1, type: "footbridge", colors: ['#580B0E','#1A0001','#7D2226','#A14045']})
+        b.push({shape:[[0,0],[-1,0],[1,0]], towers: [], player: 1, type: "bridge", colors: ['#580B0E','#1A0001','#7D2226','#A14045']})
         b.push({shape:[[0,0],[0,1],[1,0],[1,1]], towers: [], player: 1, type: "plaza", colors: ['#580B0E','#1A0001','#7D2226','#A14045']})
         b.push({shape:[[0,0],[1,0],[0,-1],[-1,-1]], towers: [], player: 1, type: "school", colors: ['#580B0E','#1A0001','#7D2226','#A14045']})
         b.push({shape:[[0,0],[0,-1],[1,0],[0,1]], towers: [[0,0]], player: 1, type: "courthouse", colors: ['#580B0E','#1A0001','#7D2226','#A14045']})
