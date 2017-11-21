@@ -3,14 +3,14 @@
 }
 
 .Navigation {
-  color: #EEE;
+  color: #eee;
   background-color: #222;
 }
 
 .GameBoard {
   position: relative;
-  height: 500px;
-  width: 500px;
+  height: 100%;
+  width: 100%;
   margin: 0 auto;
   transform-style: preserve-3d;
   perspective: 800px;
@@ -19,10 +19,8 @@
   position: absolute;
   height: 100%;
   width: 100%;
-  top: 38px;
-  
+
   transform-style: preserve-3d;
-  transform: rotateX(30deg) translateZ(-36px);
 }
 
 .GameTile {
@@ -73,5 +71,5 @@
   position: relative;
   top: 50px;
   margin: 0 auto;
-  background-color: #5F9;
+  background-color: #5f9;
 }
