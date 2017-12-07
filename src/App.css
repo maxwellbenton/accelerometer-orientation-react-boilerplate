@@ -1,7 +1,3 @@
-.App {
-  text-align: center;
-}
-
 .Navigation {
   color: #eee;
   background-color: #222;
@@ -11,14 +7,13 @@
   position: relative;
   height: 100%;
   width: 100%;
-  overflow: hidden;
+  color: #000;
   transform-style: preserve-3d;
-  perspective: 800px;
 }
 .BoardLayer {
-  position: relative;
+  position: absolute;
   height: 100%;
   width: 100%;
-
+  perspective: 2000px;
   transform-style: preserve-3d;
 }
